@@ -1,8 +1,8 @@
-﻿using Authorize.NET_API;
-using Authorize.NET_API.Models;
+﻿using Newtonsoft.Json.Linq;
+using Authorize.NET_API;
 using Authorize.NET_API.Constants;
+using Authorize.NET_API_UnitTests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 
 namespace Authorize.NET_API_UnitTests {
     [TestClass]
@@ -10,15 +10,12 @@ namespace Authorize.NET_API_UnitTests {
         
         [TestMethod]
         public void SuccessfulRequest () {
-            MerchantAuthentication merchant = new MerchantAuthentication {
-                apiLoginId = Endpoint.Sandbox.ApiLoginId,
-                transactionKey = Endpoint.Sandbox.TransactionKey
-            };
-            string response = AuthorizeApi.AuthenticateTestRequest(Endpoint.Sandbox.Url, merchant);
+            string response = AuthorizeApi.AuthenticateTestRequest(Endpoint.Sandbox.Url, Mockup.Merchant());
             JObject json = JObject.Parse(response);
 
             Assert.AreEqual("Ok", (string)json["messages"]["resultCode"]);
         }
+
     }
 }
 

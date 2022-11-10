@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="AuthorizeApi.cs" />
     <Compile Include="Code\Rest.cs" />
+    <Compile Include="Code\StringifyResponse.cs" />
     <Compile Include="Constants\ContentType.cs" />
     <Compile Include="Constants\Endpoint.cs" />
     <Compile Include="Constants\RequestMethod.cs" />
@@ -84,8 +85,8 @@
       <MergeAssemblies Include="$(OutputPath)\Newtonsoft.Json.dll" />
     </ItemGroup>
     <PropertyGroup>
-      <OutputAssembly>$(OutputPath)\Release_Authorize.NET_API.dll</OutputAssembly>
-      <Merger Condition="('$(OS)' == 'Windows_NT')">&quot;$(SolutionDir)\packages\ILRepack.2.0.15\tools\ILRepack.exe&quot;</Merger>
+      <OutputAssembly>$(SolutionDir)\packages\Release_Authorize.NET_API.dll</OutputAssembly>
+      <Merger Condition="('$(OS)' == 'Windows_NT')">"$(SolutionDir)\packages\ILRepack.2.0.15\tools\ILRepack.exe"</Merger>
     </PropertyGroup>
     <Message Text="MERGING: @(MergeAssemblies->'%(Filename)') into $(OutputAssembly)" Importance="High" />
     <Exec Command="$(Merger) /out:&quot;$(OutputAssembly)&quot; @(MergeAssemblies->'&quot;%(FullPath)&quot;', ' ')" />

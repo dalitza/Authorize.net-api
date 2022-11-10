@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clAuthorizeCC", "clAuthorizeCC\clAuthorizeCC.csproj", "{452243F9-3C7A-4914-87C8-E39C47D1E38E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A2FA8A39-F0EF-422E-BC53-B4E0A45ABA45} = {A2FA8A39-F0EF-422E-BC53-B4E0A45ABA45}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorize.NET_API_UnitTests", "Authorize.NET_API_UnitTests\Authorize.NET_API_UnitTests.csproj", "{8D368BC9-ED59-4030-B2EF-103D26BB7F38}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A2FA8A39-F0EF-422E-BC53-B4E0A45ABA45} = {A2FA8A39-F0EF-422E-BC53-B4E0A45ABA45}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorize.NET_API", "Authorize.NET_API\Authorize.NET_API.csproj", "{A2FA8A39-F0EF-422E-BC53-B4E0A45ABA45}"
 EndProject

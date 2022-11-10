@@ -1,30 +1,34 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using Authorize.NET_API;
+using Authorize.NET_API.Constants;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Authorize.NET_API_UnitTests.Data;
+using Authorize.NET_API.Models;
 
 namespace Authorize.NET_API_UnitTests {
-    /*[TestClass]
+    [TestClass]
     public class CreateTransactionRequest {
+        
         [TestMethod]
-        public void TestMethod1 () {
+        public void SuccessfulRequest () {
+            string response = AuthorizeApi.CreateTransactionRequest(Endpoint.Sandbox.Url, Mockup.Transaction());
+            JObject json = JObject.Parse(response);
 
+            Assert.AreEqual("Ok", (string)json["messages"]["resultCode"]);
         }
+
+        [TestMethod]
+        public void DeclinedTransactionRequest () {
+            Transaction transaction = Mockup.Transaction();
+            transaction.address.zip = "46282";
+
+            string response = AuthorizeApi.CreateTransactionRequest(Endpoint.Sandbox.Url, transaction);
+            JObject json = JObject.Parse(response);
+
+            Assert.AreEqual("Ok", (string)json["messages"]["resultCode"]);
+            Assert.AreEqual("2", (string)json["transactionResponse"]["responseCode"]);
+        }
+
+
     }
-    */
 }
-
-/*
-public static void TestPurchase () {
-    MerchantAuthentication merchant = new MerchantAuthentication { };
-    OrderInformation order = new OrderInformation { };
-    CreditCard creditCard = new CreditCard { };
-    Address address = new Address { };
-
-    Transaction transaction = new Transaction {
-        merchant = merchant,
-        order = order,
-        creditCard = creditCard,
-        address = address
-    };
-
-    CreateTransactionRequest(Endpoint.Sandbox, transaction);
-}*/

@@ -11,29 +11,31 @@ namespace Authorize.NET_API {
         
         public static string AuthenticateTestRequest(string urlEndpoint, MerchantAuthentication merchant) {
             JObject json = Json.AuthenticateTestRequest(merchant);
-            var requestBody = JsonConvert.SerializeObject(json);
-            
-            string response = Rest.Request(urlEndpoint, RequestMethod.POST, ContentType.JSON, requestBody);
-            PrintRequestResponse(requestBody, response);
+
+            string request = JsonConvert.SerializeObject(json);
+            string response = Rest.Request(urlEndpoint, RequestMethod.POST, ContentType.JSON, request);
+
+            //Console.WriteLine(StringifyResponse.BuildResponseResults(response));
+            Console.WriteLine(StringifyResponse.BuildRequestResponse(request, response));
+
             return response;
         }
         
         public static string CreateTransactionRequest(string urlEndpoint, Transaction transaction) {
             JObject json = Json.CreateTransactionRequest(transaction);
-            var requestBody = JsonConvert.SerializeObject(json);
 
-            string response = Rest.Request(urlEndpoint, RequestMethod.POST, ContentType.JSON, requestBody);
-            PrintRequestResponse(requestBody, response);
+            string request = JsonConvert.SerializeObject(json);
+            string response = Rest.Request(urlEndpoint, RequestMethod.POST, ContentType.JSON, request);
+
+            //Console.WriteLine(StringifyResponse.BuildResponseResults(response));
+            Console.WriteLine(StringifyResponse.BuildRequestResponse(request, response));
+
             return response;
         }
-        
-        private static void PrintRequestResponse (string request, string response) {
-            Console.WriteLine("Request:");
-            Console.WriteLine(request);
-            Console.WriteLine("");
-            Console.WriteLine("Response:");
-            Console.WriteLine(response);
+
+        public static void test()
+        {
+            AuthenticateTestRequest(Constants.Endpoint.Sandbox.Url, new MerchantAuthentication { apiLoginId = Constants.Endpoint.Sandbox.ApiLoginId, transactionKey = Constants.Endpoint.Sandbox.TransactionKey });
         }
-        
     }
 }

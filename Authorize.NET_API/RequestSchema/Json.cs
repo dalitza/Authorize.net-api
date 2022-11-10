@@ -17,7 +17,7 @@ namespace Authorize.NET_API.RequestSchema {
             JObject merchant = MerchantAuthentication(transaction.merchant);
             JObject payment = Payment(transaction.creditCard);
             JObject billTo = BillTo(transaction.address);
-            JObject order = Order(transaction.order);
+            JObject order = Order(transaction.orderInformation);
             
             return new JObject(
                 new JProperty("createTransactionRequest",
@@ -28,8 +28,9 @@ namespace Authorize.NET_API.RequestSchema {
                                 new JProperty("transactionType", "authCaptureTransaction"),
                                 new JProperty("amount", transaction.amount),
                                 new JProperty("payment", payment),
-                                new JProperty("billTo", billTo),
-                                new JProperty("order", order))))));
+                                new JProperty("order", order),
+                                new JProperty("billTo", billTo)
+                                )))));
         }
 
         private static JObject MerchantAuthentication (MerchantAuthentication merchant) {

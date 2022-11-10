@@ -11,6 +11,6 @@ namespace Authorize.NET_API.Models {
         public MerchantAuthentication merchant { get; set; }
         public CreditCard creditCard { get; set; }
         public Address address { get; set; }
-        public OrderInformation order { get; set; }
+        public OrderInformation orderInformation { get; set; }
     }
 }
